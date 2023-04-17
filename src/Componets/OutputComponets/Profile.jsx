@@ -1,8 +1,19 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Grid, Typography, } from '@mui/material'
 import ProfileImage from './ProfileImage'
 
 function Profile() {
+    const[data, setData] = useState([])
+    useEffect(()=>{
+        try{
+            const dataValues = JSON.parse(localStorage.getItem('formValues'))
+            setData(dataValues)
+            console.log('data from localStorage:', dataValues)
+        }catch(error){
+            console.log('error fetching data:', error)
+            setData({default: 'value'})
+        }
+    },[])
   return (
     <Grid item xs={12} sx={{marginTop: '50px', backgroundColor:'#45454a', color: 'white', p:'10px', height: '100%', alignContent:'center'}}>
         
@@ -13,15 +24,15 @@ function Profile() {
             <Typography variant='h5' sx={{borderBottom:'2px solid white', fontWeight: '500', color: 'white', marginTop: '20px'}}>Contact</Typography>
             <Grid>
                 <Typography variant='h6'>Phone</Typography>
-                <Typography variant='h6'>09876543</Typography>
+                <Typography variant='h6'>{data.phone}</Typography>
             </Grid>
             <Grid>
                 <Typography variant='h6'>Email</Typography>
-                <Typography variant='h6'>placeholder@example.com</Typography>
+                <Typography variant='h6'>{data.email}</Typography>
             </Grid>
             <Grid>
                 <Typography variant='h6'>Address</Typography>
-                <Typography variant='h6'>123 Anywhere st, Earth</Typography>
+                <Typography variant='h6'>{data.address1}</Typography>
             </Grid>
         </Grid>
 

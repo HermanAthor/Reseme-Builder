@@ -1,9 +1,15 @@
-import { Grid, Typography } from '@mui/material'
-import { Formik, Form} from 'formik'
-import React from 'react'
+import { Button, Grid, Typography } from '@mui/material'
+import { Form, useFormikContext, } from 'formik'
+
 import TextFieldComp from './TextFieldComp'
-import * as Yup from "yup"
+//import * as Yup from "yup"
 import SelectComp from './SelectComp'
+import NameComp from '../NameComp'
+import Education from './InputComponets/Education'
+import AboutInfo from './InputComponets/AboutInfo'
+import Experience from './InputComponets/Experience'
+import References from './InputComponets/References'
+
 
 function UserFormComp() {
   const countries = {
@@ -102,59 +108,59 @@ function UserFormComp() {
 
 
   }
-  const ValidationSchema = Yup.object().shape({
-    firstName: Yup.string().required('Required'),
-    lastName: Yup.string().required('Required'),
-    email: Yup.string().email('Invalid Email'),
-    phone: Yup.number().integer('number').required('required'),
-    address1: Yup.string().required('required'),
-    address2: Yup.string(),
-    city: Yup.string().required('Required'),
-    state: Yup.string().required('Required'),
-    country: Yup.string().required('Required'),
-    birthYear: Yup.string().required('Required'),
-    birthMonth:Yup.string().required('Required'),
-    birthDay:Yup.string().required('Required'),
-    gender:Yup.string().required('Required')
+  // const ValidationSchema = Yup.object().shape({
+  //   firstName: Yup.string().required('Required'),
+  //   lastName: Yup.string().required('Required'),
+  //   email: Yup.string().email('Invalid Email'),
+  //   phone: Yup.number().integer('number').required('required'),
+  //   address1: Yup.string().required('required'),
+  //   address2: Yup.string(),
+  //   city: Yup.string().required('Required'),
+  //   state: Yup.string().required('Required'),
+  //   country: Yup.string().required('Required'),
+  //   birthYear: Yup.string().required('Required'),
+  //   birthMonth:Yup.string().required('Required'),
+  //   birthDay:Yup.string().required('Required'),
+  //   gender:Yup.string().required('Required')
 
-  })
-  const INIT_VALUES ={
-    firstName:'',
-    lastName:'',
-    email:'',
-    phone:'',
-    address1:'',
-    address2:'',
-    city:'',
-    state:'',
-    country:'',
-    birthYear:'',
-    birthMonth:'',
-    birthDay:'',
-    gender:'',
+  // })
+  // const INIT_VALUES ={
+  //   firstName:'',
+  //   lastName:'',
+  //   email:'',
+  //   phone:'',
+  //   address1:'',
+  //   address2:'',
+  //   city:'',
+  //   state:'',
+  //   country:'',
+  //   birthYear:'',
+  //   birthMonth:'',
+  //   birthDay:'',
+  //   gender:'',
 
-  }
+  // }
+  const { handleSubmit } = useFormikContext()
+
+  // useEffect(()=>{
+  //   localStorage.setItem('formValues', JSON.stringify(values))
+  // },[values])
 
   return (
     <div style={styles}>
-        <Formik
-          initialValues = {{            
-            ...INIT_VALUES
-          }}
-          validationSchema={ValidationSchema}
-        >
-            <Form>
+        {/* <Formik
+           initialValues = {{  
+             ...INIT_VALUES
+            }}
+           validationSchema={ValidationSchema}
+           onSubmit={(values)=> alert(JSON.stringify(values))}
+        > */}
+            <Form onSubmit={handleSubmit}>
               <Grid container spacing={2}>
                 <Grid item xs={12}>
                   <Typography variant='h4' color='secondary'>Personal Information</Typography>
                 </Grid>
-                <Grid item xs={6}>
-                  <TextFieldComp
-                    name='firstName'
-                    label='First Name'
-                    sx={{margin: '20px'}}
-                  />
-                </Grid>
+                <Grid item xs={6}><NameComp/></Grid>
                 <Grid item xs={6}>
                   <TextFieldComp
                     name='lastName'
@@ -211,6 +217,7 @@ function UserFormComp() {
                     sx={{margin: '20px'}}
                   />
                 </Grid>
+                <Grid item xs={12}><AboutInfo/></Grid>
 
                 <Grid item xs={12}>
                   <Typography variant='h4' color='secondary'>Address</Typography>
@@ -251,14 +258,26 @@ function UserFormComp() {
                     options={countries}
                   />
                 </Grid>
+                <Grid item xs={12}>
+                  <Education/>
+                </Grid>
+
+                <Grid item xs={12}>
+                  <Experience/>
+                </Grid>
+                
+                <Grid item xs={12}>
+                  <References/>
+                </Grid>
 
                 <Grid item xs={12}>
                   <Typography variant='h4' color='secondary'>Booking Dates</Typography>
                 </Grid>
 
               </Grid>
+              <Button variant='filled' color='secondary' type='submit'>Submit</Button>
             </Form>
-        </Formik>
+        {/* </Formik> */}
     </div>
   )
 }
