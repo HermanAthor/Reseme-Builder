@@ -9,8 +9,12 @@ function Details() {
     
     useEffect(()=>{
         try{
-            const data = JSON.parse(localStorage.getItem('formValues'))
-            setData(data)
+            const formValues = JSON.parse(localStorage.getItem('formValues'))
+            if(formValues){
+                setData(formValues)
+            }else{
+                setData('value')
+            }
         }catch(error){
             console.log('error fetching data:', error)
             setData({default: 'value'})

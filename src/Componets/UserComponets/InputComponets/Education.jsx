@@ -6,7 +6,7 @@ function Education() {
   return (
     <Grid container spacing={2}>
         <Grid item xs={12}>
-            <Typography variant='h4' color='secondary'>Education</Typography>
+            <Typography variant='h5' color='info'>Education</Typography>
         </Grid>
         <Grid item xs={6}>
             <TextFieldComp

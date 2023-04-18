@@ -1,0 +1,57 @@
+.footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #4b4949;
+    color: #e6e8ea;
+    flex-direction: column;
+    width: 100%;
+    
+}
+.footer--list--container{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 10px;
+    list-style: none;
+
+}
+.footer--list--container ul{
+    list-style: none;
+    line-height: 20px;
+    font-size: 15px;
+
+}
+.footer--list--container ul p{
+    font-size: 25px;
+}
+.SignUp--container{
+
+}
+.email--input input{
+    padding: 8px 10px;
+    border-bottom-left-radius: 20px;
+    border: none;
+    font-size: 20px;
+   
+}
+.email--input button{
+    padding: 8px 10px;
+    border-top-right-radius: 20px;
+    border: none;
+    color: azure;
+    background-color: #09f509;
+    font-weight: 500;
+    font-size: 20px;
+}
+.email--input{
+    width: 100%;
+}
+.bottom--text{
+    width: 70%;
+}
+.icons--container{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

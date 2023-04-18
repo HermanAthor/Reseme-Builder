@@ -1,4 +1,11 @@
 .App {
   background-color: #dedee0;
 }
+.generate{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  padding-top: 40%;
+}
 

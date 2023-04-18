@@ -3,7 +3,7 @@ import UserFormComp from './UserComponets/UserFormComp'
 import { Formik, } from 'formik'
 import * as Yup from "yup"
 
-function User() {
+function User({setSubmiting}) {
 
   const ValidationSchema = Yup.object().shape({
     firstName: Yup.string().required('Required'),
@@ -63,16 +63,30 @@ function User() {
     jobPosition:'',
 
   }
-  const submit = (values)=> localStorage.setItem('formValues', JSON.stringify(values))
+  const submit = (values)=> {
+    localStorage.setItem('formValues', JSON.stringify(values))
+    setSubmiting(true)
+  }
+  const styles ={
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    overflow: 'scroll',
+    height: '100vh',
+    backgroundColor: 'rgb(54, 53, 53)',
+    color: '#f0f8ff',
+  }
   
   return (
-    <Formik
-      initialValues={{...INIT_VALUES}}
-      validationSchema={ValidationSchema}
-      onSubmit={submit}
-    >
-      <UserFormComp />
-    </Formik>
+    <div /*style={styles}*/>
+      <Formik
+          initialValues={{...INIT_VALUES}}
+          validationSchema={ValidationSchema}
+          onSubmit={submit}
+        >
+          <UserFormComp />
+      </Formik>
+    </div>
   )
 }
 

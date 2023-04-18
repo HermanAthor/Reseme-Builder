@@ -6,7 +6,7 @@ function AboutInfo() {
   return (
     <div>
         <Grid item xs={12}>
-            <Typography variant='h4' color='secondary'>About</Typography>
+            <Typography variant='h5' color='info'>About</Typography>
         </Grid>
         <Grid item xs={12}>
             <TextFieldComp

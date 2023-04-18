@@ -104,7 +104,9 @@ function UserFormComp() {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    margin: '50px'
+    margin: '50px',
+    
+    
 
 
   }
@@ -158,7 +160,7 @@ function UserFormComp() {
             <Form onSubmit={handleSubmit}>
               <Grid container spacing={2}>
                 <Grid item xs={12}>
-                  <Typography variant='h4' color='secondary'>Personal Information</Typography>
+                  <Typography variant='h5' color='info'>Personal Information</Typography>
                 </Grid>
                 <Grid item xs={6}><NameComp/></Grid>
                 <Grid item xs={6}>
@@ -201,7 +203,6 @@ function UserFormComp() {
                   />
                 </Grid>
 
-
                 <Grid item xs={6}>
                   <TextFieldComp
                     name='email'
@@ -220,7 +221,7 @@ function UserFormComp() {
                 <Grid item xs={12}><AboutInfo/></Grid>
 
                 <Grid item xs={12}>
-                  <Typography variant='h4' color='secondary'>Address</Typography>
+                  <Typography variant='h5' color='info'>Address</Typography>
                 </Grid>
                 <Grid item xs={6}>
                   <TextFieldComp
@@ -270,12 +271,8 @@ function UserFormComp() {
                   <References/>
                 </Grid>
 
-                <Grid item xs={12}>
-                  <Typography variant='h4' color='secondary'>Booking Dates</Typography>
-                </Grid>
-
               </Grid>
-              <Button variant='filled' color='secondary' type='submit'>Submit</Button>
+              <Button variant='contained' color='info' type='submit'>Submit</Button>
             </Form>
         {/* </Formik> */}
     </div>

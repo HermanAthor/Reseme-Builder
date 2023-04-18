@@ -7,13 +7,18 @@ function Profile() {
     useEffect(()=>{
         try{
             const dataValues = JSON.parse(localStorage.getItem('formValues'))
-            setData(dataValues)
-            console.log('data from localStorage:', dataValues)
+            if (dataValues && dataValues === null){
+                setData(dataValues)
+            }else{
+                setData({default:'value'})
+            }
+            
         }catch(error){
             console.log('error fetching data:', error)
             setData({default: 'value'})
         }
     },[])
+    console.log('dataOutput', data)
   return (
     <Grid item xs={12} sx={{marginTop: '50px', backgroundColor:'#45454a', color: 'white', p:'10px', height: '100%', alignContent:'center'}}>
         

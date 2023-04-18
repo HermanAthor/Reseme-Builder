@@ -3,6 +3,8 @@ import './App.css';
 import User from './Componets/User';
 import Output from './Componets/Output';
 import { useState } from 'react';
+import Footer from './Componets/Footer';
+import Header from './Componets/Header';
 // import { useFormik } from 'formik';
 // import * as Yup from "yup"
 
@@ -11,7 +13,7 @@ function App() {
   //   alert(JSON.stringify(values))
   //   setSubmiting(true)
   // } 
-  const[submiting, setSubmiting]= useState(true)
+  const[submiting, setSubmiting]= useState(false)
   // const INIT_VALUES ={
   //   firstName:'',
   //   lastName:'',
@@ -57,11 +59,17 @@ function App() {
     <div className="App">
 
       <Grid container spacing={2}>
+        <Grid item xs={12}>
+          <Header/>
+        </Grid>
         <Grid item xs={4}>
-          <User/>
+          <User setSubmiting={setSubmiting}/>
         </Grid>
         <Grid item xs={8}>
-          {submiting? <Output /> : <div>Generating Your CV</div>}
+          {submiting? <Output /> : <div className='generate'>Generating Your Reseme...</div>}
+        </Grid>
+        <Grid item xs={12}>
+          <Footer/>
         </Grid>
       </Grid>
     </div>
