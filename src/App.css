@@ -1,11 +1,15 @@
 .App {
   background-color: #dedee0;
 }
-.generate{
+.generate, .templates{
   display: flex;
   justify-content: center;
-  align-items: center;
-  margin: auto;
-  padding-top: 40%;
+  /* align-items: center; */
+  font-size: 50px;
+  padding-top: 30%;
+  height: 100%;
+  margin-top: 80px;
+  background-color: blueviolet;
+  background: -moz-repeating-radial-gradient(rgb(117, 113, 113) 10%, transparent 40%, purple 40%);
 }
 

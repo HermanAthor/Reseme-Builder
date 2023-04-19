@@ -101,10 +101,12 @@ function UserFormComp() {
 
   }
   const styles = {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    margin: '50px',
+    // display: 'flex',
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    // height:'100vh',
+    // overflow: 'scroll',
+    padding:'40px',
     
     
 

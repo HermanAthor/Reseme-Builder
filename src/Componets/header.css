@@ -18,3 +18,9 @@
 li:hover{
     text-decoration: underline;
 }
+.header-container{
+    position: fixed;
+    top: 0;
+    width: 100%;
+
+}

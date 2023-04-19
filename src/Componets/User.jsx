@@ -68,17 +68,20 @@ function User({setSubmiting}) {
     setSubmiting(true)
   }
   const styles ={
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    overflow: 'scroll',
-    height: '100vh',
-    backgroundColor: 'rgb(54, 53, 53)',
-    color: '#f0f8ff',
+     marginTop:'70px',
+     borderRight: '2px solid #666565',
+     
+    // display: 'flex',
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    //overflowY: 'scroll',
+    // height: '100vh',
+    // backgroundColor: 'rgb(54, 53, 53)',
+    //color: '#f0f8ff',
   }
   
   return (
-    <div /*style={styles}*/>
+    <div style={styles}>
       <Formik
           initialValues={{...INIT_VALUES}}
           validationSchema={ValidationSchema}

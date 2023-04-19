@@ -5,55 +5,55 @@ import Output from './Componets/Output';
 import { useState } from 'react';
 import Footer from './Componets/Footer';
 import Header from './Componets/Header';
-// import { useFormik } from 'formik';
-// import * as Yup from "yup"
+import ReactDOMServer from "react-dom/server";
+import { Route, Routes } from 'react-router-dom';
+import Templates from './Componets/Templates';
+//import { saveAs } from 'file-saver';
+
 
 function App() {
-  // const submit = (values)=>{
-  //   alert(JSON.stringify(values))
-  //   setSubmiting(true)
-  // } 
+   
   const[submiting, setSubmiting]= useState(false)
-  // const INIT_VALUES ={
-  //   firstName:'',
-  //   lastName:'',
-  //   email:'',
-  //   phone:'',
-  //   address1:'',
-  //   address2:'',
-  //   city:'',
-  //   state:'',
-  //   country:'',
-  //   birthYear:'',
-  //   birthMonth:'',
-  //   birthDay:'',
-  //   gender:'',
+  
+  // const styles = StyleSheet.create({
+  //   container: {
+  //     padding: 16,
+  //   },
+  // });
+  
+  // const PDFComponent = () => (
+  //   <Document>
+  //     <Page size="A4" /*style={styles.container}*/>
+  //       <Output />
+  //     </Page>
+  //   </Document>
+  // );
+  
+  
+  // const handleDownload = async () => {
+  //   try {
+  //     const blob = await pdf(<PDFComponent />).toBlob();
+  //     saveAs(blob, 'component.pdf');
+  //   } catch (error) {
+  //     console.log('Error downloading PDF:', error);
+  //   }
+  // };
 
-  // }
-  // const ValidationSchema = Yup.object().shape({
-  //   firstName: Yup.string().required('Required'),
-  //   lastName: Yup.string().required('Required'),
-  //   email: Yup.string().email('Invalid Email'),
-  //   phone: Yup.number().integer('number').required('required'),
-  //   address1: Yup.string().required('required'),
-  //   address2: Yup.string(),
-  //   city: Yup.string().required('Required'),
-  //   state: Yup.string().required('Required'),
-  //   country: Yup.string().required('Required'),
-  //   birthYear: Yup.string().required('Required'),
-  //   birthMonth:Yup.string().required('Required'),
-  //   birthDay:Yup.string().required('Required'),
-  //   gender:Yup.string().required('Required')
-
-  // })
-
-  // const formik = useFormik({
-  //   initialValues: INIT_VALUES,
-  //   validationSchema: ValidationSchema,
-  //   onSubmit: submit
-    
-
-  // })
+  const handleClick = () => {
+    const componentString = ReactDOMServer.renderToStaticMarkup(<Output />);
+    const componentBlob = new Blob([componentString], { type: "application/pdf" });
+    const componentUrl = window.URL.createObjectURL(componentBlob);
+    const link = document.createElement("a");
+    link.href = componentUrl;
+    link.download = "author.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(componentUrl);
+  }
+  
+  
+  
 
   return (
     <div className="App">
@@ -66,7 +66,17 @@ function App() {
           <User setSubmiting={setSubmiting}/>
         </Grid>
         <Grid item xs={8}>
-          {submiting? <Output /> : <div className='generate'>Generating Your Reseme...</div>}
+          { /*{submiting? <Output /> : <div className='generate'>Generating Your Reseme...</div>} */}
+          <Routes>
+            <Route path='/' element={<Output/>}/>
+            <Route path='/templates' element={<Templates/>}/>
+            
+          </Routes>
+        </Grid>
+        <Grid item xs={12}>
+          <button onClick={handleClick}>
+            Download Reseme in PDF
+          </button>
         </Grid>
         <Grid item xs={12}>
           <Footer/>
