@@ -1,5 +1,7 @@
 .App {
   background-color: #dedee0;
+  margin: 0;
+  padding: 0;
 }
 .generate, .templates{
   display: flex;

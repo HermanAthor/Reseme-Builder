@@ -4,7 +4,7 @@ import React from 'react'
 
 
 function SelectComp({name, options, ...otherProps}) {
-    const {setFieldValue} = useFormikContext
+    const {setFieldValue} = useFormikContext()
     const handleChange = (e)=>{
         const {value} = e.target
         setFieldValue(name, value)
@@ -17,8 +17,8 @@ function SelectComp({name, options, ...otherProps}) {
         select: true,
         fullWidth: true,
         ...field,
-        ...otherProps,
-        onchange: handleChange
+         ...otherProps,
+        onChange: handleChange
         
     }
     if(meta && meta.touched && meta.error){

@@ -4,7 +4,7 @@ import { Grid, Typography, Stack } from '@mui/material'
 
 
 
-function Details() {
+function Details({experience2}) {
     const[data, setData] = useState([])
     
     useEffect(()=>{
@@ -26,9 +26,9 @@ function Details() {
     <Grid item xs={12} sx={{marginTop: '50px', backgroundColor:'#dedee0', color: '#505052', p:'20px', height:'100%'}}>
         <Grid item xs={12} sx={{width:'100%'}}>
             <Stack >
-                <Grid xs={12}><Typography variant='h3'>{data.firstName} {data.lastName}</Typography></Grid>
-                <Grid xs={12}><Typography variant='h5'>{data.jobTittle}</Typography></Grid>
-                <Grid xs={12} sx={{ margin:'10px', p: '10px'}}>
+                <Grid item xs={12}><Typography variant='h3'>{data.firstName} {data.lastName}</Typography></Grid>
+                <Grid item xs={12}><Typography variant='h5'>{data.jobTittle}</Typography></Grid>
+                <Grid item xs={12} sx={{ margin:'10px', p: '10px'}}>
                     <Typography variant='h6'>
                         {data.about}
                     </Typography>
@@ -47,7 +47,7 @@ function Details() {
                     </Typography>
                 </Stack>
             </Grid>
-            <Grid item xs={12}>
+            { experience2 && <Grid item xs={12}>
                 <Stack>
                     <Typography variant='h6-bold'>{data.year1}</Typography>
                     <Typography variant='h6'>{data.companyName}</Typography>
@@ -56,7 +56,7 @@ function Details() {
                         {data.aboutPosition}
                     </Typography>
                 </Stack>
-            </Grid>
+            </Grid>}
             <Grid item xs={12}>
                 <Stack>
                     <Typography variant='h6-bold'>{data.year1}</Typography>

@@ -1,10 +1,10 @@
 import React from 'react'
 import TheLayOut from './OutputComponets/TheLayOut'
 
-function Output() {
+function Output({experience2}) {
   
   return (
-    <TheLayOut />
+    <TheLayOut experience2={experience2}/>
   )
 }
 

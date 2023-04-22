@@ -3,7 +3,7 @@ import UserFormComp from './UserComponets/UserFormComp'
 import { Formik, } from 'formik'
 import * as Yup from "yup"
 
-function User({setSubmiting}) {
+function User({setSubmiting,setExperience2,experience2}) {
 
   const ValidationSchema = Yup.object().shape({
     firstName: Yup.string().required('Required'),
@@ -87,7 +87,7 @@ function User({setSubmiting}) {
           validationSchema={ValidationSchema}
           onSubmit={submit}
         >
-          <UserFormComp />
+          <UserFormComp setExperience2={setExperience2} experience2={experience2}/>
       </Formik>
     </div>
   )

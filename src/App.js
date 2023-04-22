@@ -5,7 +5,6 @@ import Output from './Componets/Output';
 import { useState } from 'react';
 import Footer from './Componets/Footer';
 import Header from './Componets/Header';
-import ReactDOMServer from "react-dom/server";
 import { Route, Routes } from 'react-router-dom';
 import Templates from './Componets/Templates';
 //import { saveAs } from 'file-saver';
@@ -14,6 +13,7 @@ import Templates from './Componets/Templates';
 function App() {
    
   const[submiting, setSubmiting]= useState(false)
+  const[experience2, setExperience2]= useState(false)
   
   // const styles = StyleSheet.create({
   //   container: {
@@ -38,23 +38,7 @@ function App() {
   //     console.log('Error downloading PDF:', error);
   //   }
   // };
-
-  const handleClick = () => {
-    const componentString = ReactDOMServer.renderToStaticMarkup(<Output />);
-    const componentBlob = new Blob([componentString], { type: "application/pdf" });
-    const componentUrl = window.URL.createObjectURL(componentBlob);
-    const link = document.createElement("a");
-    link.href = componentUrl;
-    link.download = "author.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    window.URL.revokeObjectURL(componentUrl);
-  }
   
-  
-  
-
   return (
     <div className="App">
 
@@ -63,21 +47,21 @@ function App() {
           <Header/>
         </Grid>
         <Grid item xs={4}>
-          <User setSubmiting={setSubmiting}/>
+          <User setSubmiting={setSubmiting} setExperience2={setExperience2} experience2={experience2}/>
         </Grid>
         <Grid item xs={8}>
           { /*{submiting? <Output /> : <div className='generate'>Generating Your Reseme...</div>} */}
           <Routes>
-            <Route path='/' element={<Output/>}/>
+            <Route path='/' element={<Output experience2={experience2}/>}/>
             <Route path='/templates' element={<Templates/>}/>
             
           </Routes>
         </Grid>
-        <Grid item xs={12}>
-          <button onClick={handleClick}>
+        {/* <Grid item xs={12}>
+          <Button variant='contained' fullWidth={true} sx={{m:'10px 50px'}} onClick={handleClick}>
             Download Reseme in PDF
-          </button>
-        </Grid>
+          </Button>
+        </Grid> */}
         <Grid item xs={12}>
           <Footer/>
         </Grid>

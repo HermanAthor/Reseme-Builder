@@ -11,7 +11,8 @@ import Experience from './InputComponets/Experience'
 import References from './InputComponets/References'
 
 
-function UserFormComp() {
+function UserFormComp({setExperience2, experience2}) {
+  const handleAddExperience = ()=> setExperience2(prev => !prev)
   const countries = {
     'AF': 'Afghanistan',
     'DK': 'Denmark',
@@ -101,182 +102,138 @@ function UserFormComp() {
 
   }
   const styles = {
-    // display: 'flex',
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    // height:'100vh',
-    // overflow: 'scroll',
+    display:'flex',
+    overFlow:'auto',
     padding:'40px',
-    
-    
-
-
+    height:'fit-content',
   }
-  // const ValidationSchema = Yup.object().shape({
-  //   firstName: Yup.string().required('Required'),
-  //   lastName: Yup.string().required('Required'),
-  //   email: Yup.string().email('Invalid Email'),
-  //   phone: Yup.number().integer('number').required('required'),
-  //   address1: Yup.string().required('required'),
-  //   address2: Yup.string(),
-  //   city: Yup.string().required('Required'),
-  //   state: Yup.string().required('Required'),
-  //   country: Yup.string().required('Required'),
-  //   birthYear: Yup.string().required('Required'),
-  //   birthMonth:Yup.string().required('Required'),
-  //   birthDay:Yup.string().required('Required'),
-  //   gender:Yup.string().required('Required')
 
-  // })
-  // const INIT_VALUES ={
-  //   firstName:'',
-  //   lastName:'',
-  //   email:'',
-  //   phone:'',
-  //   address1:'',
-  //   address2:'',
-  //   city:'',
-  //   state:'',
-  //   country:'',
-  //   birthYear:'',
-  //   birthMonth:'',
-  //   birthDay:'',
-  //   gender:'',
-
-  // }
   const { handleSubmit } = useFormikContext()
 
-  // useEffect(()=>{
-  //   localStorage.setItem('formValues', JSON.stringify(values))
-  // },[values])
-
   return (
-    <div style={styles}>
-        {/* <Formik
-           initialValues = {{  
-             ...INIT_VALUES
-            }}
-           validationSchema={ValidationSchema}
-           onSubmit={(values)=> alert(JSON.stringify(values))}
-        > */}
-            <Form onSubmit={handleSubmit}>
-              <Grid container spacing={2}>
-                <Grid item xs={12}>
-                  <Typography variant='h5' color='info'>Personal Information</Typography>
-                </Grid>
-                <Grid item xs={6}><NameComp/></Grid>
-                <Grid item xs={6}>
-                  <TextFieldComp
-                    name='lastName'
-                    label='Last Name'
-                    sx={{margin: '20px'}}
-                  />
-                </Grid>
-                <Grid item xs={3}>
-                  <SelectComp
-                    name='birthYear'
-                    label='Year'
-                    options={years}
-                    sx={{margin: '20px'}}
-                  />
-                </Grid>
-                <Grid item xs={3}>
-                  <SelectComp
-                    name='birthMonth'
-                    label='Month'
-                    options={months}
-                    sx={{margin: '20px'}}
-                  />
-                </Grid>
-                <Grid item xs={3}>
-                  <SelectComp
-                    name='birthDay'
-                    label='Day'
-                    options={days}
-                    sx={{margin: '20px'}}
-                  />
-                </Grid>
-                <Grid item xs={3}>
-                  <SelectComp
-                    name='gender'
-                    label='Gender'
-                    options={genders}
-                    sx={{margin: '20px'}}
-                  />
-                </Grid>
+    <div style={{display:'flex', minHeight:'min-content',}}>
+      <Form onSubmit={handleSubmit}>
+        <Grid container spacing={2} sx={styles}>
+          <Grid item xs={12}>
+            <Typography variant='h5' color='info'>Personal Information</Typography>
+          </Grid>
+          <Grid item xs={6}><NameComp/></Grid>
+          <Grid item xs={6}>
+            <TextFieldComp
+              name='lastName'
+              label='Last Name'
+              sx={{margin: '20px'}}
+            />
+          </Grid>
+          <Grid item xs={3}>
+            <SelectComp
+              name='birthYear'
+              label='Year'
+              options={years}
+              sx={{margin: '20px'}}
+            />
+          </Grid>
+          <Grid item xs={3}>
+            <SelectComp
+              name='birthMonth'
+              label='Month'
+              options={months}
+              sx={{margin: '20px'}}
+            />
+          </Grid>
+          <Grid item xs={3}>
+            <SelectComp
+              name='birthDay'
+              label='Day'
+              options={days}
+              sx={{margin: '20px'}}
+            />
+          </Grid>
+          <Grid item xs={3}>
+            <SelectComp
+              name='gender'
+              label='Gender'
+              options={genders}
+              sx={{margin: '20px'}}
+            />
+          </Grid>
 
-                <Grid item xs={6}>
-                  <TextFieldComp
-                    name='email'
-                    label='Email'
-                    sx={{margin: '20px'}}
-                  />
-                </Grid>
-                <Grid item xs={6}>
-                  <TextFieldComp
-                    name='phone'
-                    label='Phone Number'
-                    type='number'
-                    sx={{margin: '20px'}}
-                  />
-                </Grid>
-                <Grid item xs={12}><AboutInfo/></Grid>
+          <Grid item xs={6}>
+            <TextFieldComp
+              name='email'
+              label='Email'
+              sx={{margin: '20px'}}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <TextFieldComp
+              name='phone'
+              label='Phone Number'
+              type='number'
+              sx={{margin: '20px'}}
+            />
+          </Grid>
+          <Grid item xs={12}><AboutInfo/></Grid>
 
-                <Grid item xs={12}>
-                  <Typography variant='h5' color='info'>Address</Typography>
-                </Grid>
-                <Grid item xs={6}>
-                  <TextFieldComp
-                    name='address1'
-                    label='Address 1'
-                    sx={{margin: '20px'}}
-                  />
-                </Grid>
-                <Grid item xs={6}>
-                  <TextFieldComp
-                    name='address2'
-                    label='Address 2'
-                    sx={{margin: '20px'}}
-                  />
-                </Grid>
-                <Grid item xs={4}>
-                  <TextFieldComp
-                    name='city'
-                    label='City'
-                    sx={{margin: '20px'}}
-                  />
-                </Grid>
-                <Grid item xs={4}>
-                  <TextFieldComp
-                    name='state'
-                    label='State'
-                    sx={{margin: '20px'}}
-                  />
-                </Grid>
-                <Grid item xs={4}>
-                  <SelectComp
-                    name='country'
-                    label='Country'
-                    sx={{margin: '20px'}}
-                    options={countries}
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <Education/>
-                </Grid>
+          <Grid item xs={12}>
+            <Typography variant='h5' color='info'>Address</Typography>
+          </Grid>
+          <Grid item xs={6}>
+            <TextFieldComp
+              name='address1'
+              label='Address 1'
+              sx={{margin: '20px'}}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <TextFieldComp
+              name='address2'
+              label='Address 2'
+              sx={{margin: '20px'}}
+            />
+          </Grid>
+          <Grid item xs={4}>
+            <TextFieldComp
+              name='city'
+              label='City'
+              sx={{margin: '20px'}}
+            />
+          </Grid>
+          <Grid item xs={4}>
+            <TextFieldComp
+              name='state'
+              label='State'
+              sx={{margin: '20px'}}
+            />
+          </Grid>
+          <Grid item xs={4}>
+            <SelectComp
+              name='country'
+              label='Country'
+              sx={{margin: '20px'}}
+              options={countries}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Education/>
+          </Grid>
 
-                <Grid item xs={12}>
-                  <Experience/>
-                </Grid>
-                
-                <Grid item xs={12}>
-                  <References/>
-                </Grid>
+          <Grid item xs={12}>
+            <Experience />
+          </Grid>
+          {experience2 && 
+          <Grid item xs={12}>
+            <Experience />
+          </Grid>}
+          <Button onClick={()=> handleAddExperience()} variant='contained'>add another experience</Button>
+          
+          <Grid item xs={12}>
+            <References/>
+          </Grid>
 
-              </Grid>
-              <Button variant='contained' color='info' type='submit'>Submit</Button>
-            </Form>
-        {/* </Formik> */}
+        </Grid>
+        <Button variant='contained' fullWidth={true} p={2} color='info' type='submit'>Submit</Button>
+      </Form>
     </div>
   )
 }
