@@ -1,9 +1,13 @@
 
 import UserFormComp from './UserComponets/UserFormComp'
 import { Formik, } from 'formik'
+import { useContext } from 'react'
 import * as Yup from "yup"
+import { MainContext } from '../App'
 
-function User({setSubmiting,setExperience2,experience2}) {
+function User() {
+
+  const {setSubmiting} = useContext(MainContext)
 
   const ValidationSchema = Yup.object().shape({
     firstName: Yup.string().required('Required'),
@@ -61,6 +65,14 @@ function User({setSubmiting,setExperience2,experience2}) {
     degree:'',
     aboutPosition:'',
     jobPosition:'',
+    year2:'',
+    companyName2:'',
+    jobPosition2:'',
+    aboutPosition2:'',
+    year3:'',
+    companyName3:'',
+    jobPosition3:'',
+    aboutPosition3:'',
 
   }
   const submit = (values)=> {
@@ -87,7 +99,7 @@ function User({setSubmiting,setExperience2,experience2}) {
           validationSchema={ValidationSchema}
           onSubmit={submit}
         >
-          <UserFormComp setExperience2={setExperience2} experience2={experience2}/>
+          <UserFormComp />
       </Formik>
     </div>
   )

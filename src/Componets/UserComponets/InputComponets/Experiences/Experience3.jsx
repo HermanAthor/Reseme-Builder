@@ -1,42 +1,38 @@
-import { Button, Grid, Typography } from '@mui/material'
-import React, { useContext } from 'react'
-import TextFieldComp from '../TextFieldComp'
-import { MainContext } from '../../../App'
+import { Grid, Typography } from '@mui/material'
+import React from 'react'
+import TextFieldComp from '../../TextFieldComp'
 
-function Experience() {
-    const { setExperience2 } = useContext(MainContext)
-    const handleAddExperience = ()=> setExperience2((prev) => {
-    return !prev
-    })
+
+function Experience3() {
   return (
     <Grid container spacing={2}>
         <Grid item xs={12}>
-            <Typography variant='h5' color='info'>Experience</Typography>
+            <Typography variant='h5' color='info'>Experience <span>Option 3</span></Typography>
         </Grid>
         <Grid item xs={6}>
             <TextFieldComp
-            name='year1'
+            name='year3'
             label='Year XXXX-XXXX'
             sx={{margin: '20px'}}
             />
         </Grid>
         <Grid item xs={6}>
             <TextFieldComp
-            name='companyName'
+            name='companyName3'
             label='Company Name'
             sx={{margin: '20px'}}
             />
         </Grid>
         <Grid item xs={12}>
             <TextFieldComp
-            name='jobPosition'
+            name='jobPosition3'
             label='Job Position'
             sx={{margin: '20px'}}
             />
         </Grid>
         <Grid item xs={12}>
             <TextFieldComp
-            name='aboutPosition'
+            name='aboutPosition3'
             label='About the position'
             helperText='Write about Your Experience from the job mentioned above'
             multiline={true}
@@ -44,11 +40,8 @@ function Experience() {
             sx={{margin: '20px'}}
             />
         </Grid>
-        <Grid item xs={12}>
-            <Button onClick={ handleAddExperience} variant='contained'>add another experience</Button>
-        </Grid>
     </Grid>
   )
 }
 
-export default Experience
+export default Experience3

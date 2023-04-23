@@ -9,10 +9,14 @@ import Education from './InputComponets/Education'
 import AboutInfo from './InputComponets/AboutInfo'
 import Experience from './InputComponets/Experience'
 import References from './InputComponets/References'
+import { useContext } from 'react'
+import { MainContext } from '../../App'
+import Experience2 from './InputComponets/Experiences/Experience2'
+import Experience3 from './InputComponets/Experiences/Experience3'
 
 
-function UserFormComp({setExperience2, experience2}) {
-  const handleAddExperience = ()=> setExperience2(prev => !prev)
+function UserFormComp() {
+  const {experience2, experience3} = useContext(MainContext)
   const countries = {
     'AF': 'Afghanistan',
     'DK': 'Denmark',
@@ -223,10 +227,13 @@ function UserFormComp({setExperience2, experience2}) {
           </Grid>
           {experience2 && 
           <Grid item xs={12}>
-            <Experience />
+            <Experience2 />
           </Grid>}
-          <Button onClick={()=> handleAddExperience()} variant='contained'>add another experience</Button>
-          
+
+          {experience3 && 
+          <Grid item xs={12}>
+            <Experience3 />
+          </Grid>}
           <Grid item xs={12}>
             <References/>
           </Grid>

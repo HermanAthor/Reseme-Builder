@@ -6,7 +6,7 @@ import Details from './Details'
 import Output from '../Output';
 import { saveAs } from 'file-saver';
 
-function TheLayOut({experience2}) {
+function TheLayOut() {
 //   const handleClick = () => {
 //     const componentString = ReactDOMServer.renderToStaticMarkup(<Output />);
 //     const componentBlob = new Blob([componentString], { type: "application/pdf" });
@@ -33,7 +33,7 @@ const handleClick = () => {
         <Grid container spacing={2} sx={{pt:'50px'}} >
             <Grid container spacing={0}>
                 <Grid item xs={4} ><Profile /></Grid>
-                <Grid item xs={8} ><Details experience2={experience2} /></Grid>
+                <Grid item xs={8} ><Details /></Grid>
                 <Grid item xs={12} sx={{m:'100px'}}>
                   <Button variant='contained' fullWidth={true} onClick={handleClick}>
                     Download Reseme in PDF

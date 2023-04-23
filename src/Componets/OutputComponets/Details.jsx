@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Grid, Typography, Stack } from '@mui/material'
+import { MainContext } from '../../App'
 // import { Stack } from '@mui/system'
 
 
 
-function Details({experience2}) {
+function Details() {
     const[data, setData] = useState([])
+    const {experience2} = useContext(MainContext)
     
     useEffect(()=>{
         try{
