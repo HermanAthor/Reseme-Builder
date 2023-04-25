@@ -37,10 +37,10 @@ function App() {
           <Grid item xs={12}>
             <Header/>
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={12} md={4}>
             { <User /*setSubmiting={setSubmiting}*/ /> }
           </Grid>
-          <Grid item xs={8}>
+          <Grid item xs={12} md={8}>
             { /*{submiting? <Output /> : <div className='generate'>Generating Your Reseme...</div>} */}
             <Routes>
               <Route path='/' element={<Output />}/>

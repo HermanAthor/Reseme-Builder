@@ -13,6 +13,7 @@ import { useContext } from 'react'
 import { MainContext } from '../../App'
 import Experience2 from './InputComponets/Experiences/Experience2'
 import Experience3 from './InputComponets/Experiences/Experience3'
+import SelectCompMultiple from './InputComponets/SelectCompMultiple'
 
 
 function UserFormComp() {
@@ -175,6 +176,12 @@ function UserFormComp() {
               label='Phone Number'
               type='number'
               sx={{margin: '20px'}}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <SelectCompMultiple
+              name="selections"
+              label='Selections'
             />
           </Grid>
           <Grid item xs={12}><AboutInfo/></Grid>
